@@ -4,6 +4,7 @@ import com.odolirprojetosupero.exception.ResourceNotFoundException;
 import com.odolirprojetosupero.model.Todo;
 import com.odolirprojetosupero.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -15,9 +16,13 @@ public class TodoController {
     @Autowired
     TodoRepository todoRepository;
 
+    private Sort sortByIdAsc() {
+        return new Sort(Sort.Direction.ASC, "title");
+    }
+
     @RequestMapping(value = "/todos", method = RequestMethod.GET)
     public List<Todo> getAllTodos() {
-        return todoRepository.findAll();
+        return todoRepository.findAll(sortByIdAsc());
     }
 
     @RequestMapping(value = "/todos", method = RequestMethod.POST)
@@ -39,6 +44,9 @@ public class TodoController {
 
         todo.setTitle(todoDetails.getTitle());
         todo.setContent(todoDetails.getContent());
+        todo.setStatus(todoDetails.getStatus());
+        todo.setCreatedAt(todoDetails.getCreatedAt());
+        todo.setUpdatedAt(todoDetails.getUpdatedAt());
 
         Todo updatedTodo = todoRepository.save(todo);
         return updatedTodo;
