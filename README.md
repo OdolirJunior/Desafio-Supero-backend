@@ -1,28 +1,15 @@
-### Tarefa:
-Implementar uma tasklist utilizando Java/MySQL.
+## Odolir Junior - Desafio Supero (BACK-END)
 
-### Requisitos:
+Todos os items solicitados foram atendidos.
 
-- Adicionar novas tarefas;
-- Marcar e desmarcar o status de concluído;
-- Editar o conteúdo da task;
-- Deletar uma task;
-- Versionamento com Git;
-Obs.: uma task deve conter ao menos: título e status, podendo conter adicionalmente descrição, datas de
-criação, edição, remoção e conclusão.
+Como base do projeto, foi utilizado Spring Web, JPA e devtools e Java 8.
 
-#### Serão considerados diferenciais:
-- Camada de frontend independente do backend (API REST + frontend);
-- Utilização de frameworks ou bibliotecas de frontend (ex: jQuery, Angular, Bootstrap);
-- Utilização de JavaEE para o backend ex:(JSF, Spring, EJB);
-- Utilização de framework de persistência de dados;
-- Bons padrões de desenvolvimento e código limpo;
-- Documentação no código;
-- Estilização básica do frontend, responsividade e usabilidade (drag’n’drop);
+### Banco de dados: 
 
+Para utilizar o sistema com as mesmas configurações de banco de dado deve ser executado os seguintes comandos: <br/> 
 
-## Create table
-```dbn-sql
+1° ```CREATE DATABASE PUBLIC; ```<br/><br/>
+2° ```
 CREATE TABLE public.todos (
   id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(45) NOT NULL,
@@ -32,5 +19,19 @@ CREATE TABLE public.todos (
   updated_at DATETIME NULL,
   PRIMARY KEY (id))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8; ```
+
+O usuario e senha são os padrões do MySQL (root e root); 
+
+### Iniciar a aplicação:
+Após criar o banco de dados, 
+para iniciar a aplicação basta rodar o comando `mvn spring-boot:run` para 
+linux ou `mvnw spring-boot:run` para windows.
+
+#### Documentação: 
+
+A documentação da API foi realizada utilizando Swagger, para visualizar, basta acessar o link: 
+
+```
+http://localhost:8080/swagger-ui.html#/
 ```
