@@ -30,6 +30,9 @@ public class Todo implements Serializable{
     @Column(name = "updated_at")
     private Date updatedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private GroupTodo groupId;
 
     public Long getId() {
         return id;
@@ -77,5 +80,13 @@ public class Todo implements Serializable{
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public GroupTodo getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(GroupTodo groupId) {
+        this.groupId = groupId;
     }
 }

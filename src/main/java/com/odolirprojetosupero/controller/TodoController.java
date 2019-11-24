@@ -70,7 +70,6 @@ public class TodoController {
     public ResponseEntity<?> deleteTodo(@PathVariable(value = "id") Long todoId) {
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new ResourceNotFoundException("Todo", "id", todoId));
-
         todoRepository.delete(todo);
 
         return ResponseEntity.ok().build();
