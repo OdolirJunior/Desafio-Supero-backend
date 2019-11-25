@@ -23,7 +23,7 @@ public class GroupTodo implements Serializable {
     @JoinColumn(name = "user_id")
     private User userId;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Todo> todos = new HashSet<>();
 
     public Long getId() {

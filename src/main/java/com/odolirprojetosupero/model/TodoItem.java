@@ -19,7 +19,7 @@ public class TodoItem implements Serializable{
     @Column(name = "content")
     private String content;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "todo_id")
     private Todo todoId;
 

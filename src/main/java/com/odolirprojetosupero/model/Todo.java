@@ -30,7 +30,7 @@ public class Todo implements Serializable{
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "group_id")
     private GroupTodo groupId;
 

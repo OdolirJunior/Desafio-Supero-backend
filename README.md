@@ -9,19 +9,17 @@ Como base do projeto, foi utilizado Spring Web, JPA e devtools e Java 8.
 Para utilizar o sistema com as mesmas configurações de banco de dado deve ser executado os seguintes comandos: <br/> 
 
 1° ```CREATE DATABASE PUBLIC; ```<br/><br/>
-2° ```CREATE TABLE public.users (
-	id INT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(45) NOT NULL, 	
-	senha VARCHAR(45) NOT NULL, 	
-	PRIMARY KEY (id)
+2° ```CREATE TABLE public.users (	
+	username VARCHAR(255) NOT NULL primary key, 	
+	senha VARCHAR(255) NOT NULL, 	
+	enabled boolean not null
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
-3° ```CREATE TABLE public.group_todos (
-	id INT NOT NULL AUTO_INCREMENT,
-	title VARCHAR(45) NOT NULL, 	
-	user_id int, 
-	FOREIGN KEY (user_id) REFERENCES users(id),
-	PRIMARY KEY (id)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
+3° ```CREATE TABLE public.group_todos ( 
+    id INT NOT NULL AUTO_INCREMENT, title VARCHAR(255) NOT NULL,
+    username VARCHAR(255), 
+    FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE,
+     PRIMARY KEY (id) 
+     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
 
 4° ```CREATE TABLE public.todos (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -31,7 +29,8 @@ Para utilizar o sistema com as mesmas configurações de banco de dado deve ser 
 	group_id int, 
 	created_at DATETIME NULL, 
 	updated_at DATETIME NULL, 
-	FOREIGN KEY (group_id) REFERENCES group_todos(id),
+	FOREIGN KEY (group_id) REFERENCES group_todos(id)
+	ON DELETE CASCADE,
 	PRIMARY KEY (id)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
 
@@ -40,10 +39,16 @@ Para utilizar o sistema com as mesmas configurações de banco de dado deve ser 
 	title VARCHAR(45) NOT NULL,
 	content VARCHAR(45) NULL, 
 	todo_id int, 
-	FOREIGN KEY (todo_id) REFERENCES todos(id),
+	FOREIGN KEY (todo_id) REFERENCES todos(id)
+	ON DELETE CASCADE,
 	primary key (id)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
-
+6° ``` create table public.authorities (
+       username varchar(50) not null,
+       authority varchar(50) not null,
+       foreign key (username) references users(username))ENGINE = InnoDB DEFAULT CHARACTER SET = utf8; 
+       ```<br/><br/>
+7° ```create unique index ix_auth_username on public.authorities (username,authority);```<br/><br/>       
 O usuario e senha são os padrões do MySQL (root e root); 
 
 ### Iniciar a aplicação:

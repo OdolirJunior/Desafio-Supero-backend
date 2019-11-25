@@ -11,9 +11,13 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -70,7 +74,7 @@ public class UserController {
         User user = userRepository.findById(todoId)
                 .orElseThrow(() -> new ResourceNotFoundException("Todo", "id", todoId));
         userRepository.delete(user);
-
         return ResponseEntity.ok().build();
     }
+
 }
