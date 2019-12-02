@@ -1,9 +1,7 @@
 package com.odolirprojetosupero.controller;
 
 import com.odolirprojetosupero.exception.ResourceNotFoundException;
-import com.odolirprojetosupero.model.Todo;
 import com.odolirprojetosupero.model.User;
-import com.odolirprojetosupero.repository.TodoRepository;
 import com.odolirprojetosupero.repository.UserRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -13,8 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.validation.Valid;
-import java.util.ArrayList;
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @RestController
@@ -31,7 +30,7 @@ public class UserController {
     @ApiResponses(value= {@ApiResponse(code=200, message="Retorna um dicionario de objetos com os items", response=User.class)})
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<User> getAllTodos() {
-        return userRepository.findAll(sortByIdAsc());
+        return (List<User>) userRepository.findAll(sortByIdAsc());
     }
 
     @ApiOperation(value="Cadastrar um todo", response=User.class)
@@ -43,10 +42,16 @@ public class UserController {
 
     @ApiOperation(value="Retorna um item buscado pelo id", response=User.class)
     @ApiResponses(value= {@ApiResponse(code=200, message="Retorna um JSON com o item", response=User.class)})
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-    public User getTodoById(@PathVariable(value = "id") Long todoId) {
-        return userRepository.findById(todoId)
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", todoId));
+    @RequestMapping(value = "/users/{id}/{psw}", method = RequestMethod.GET)
+    public Cookie getTodoById(@PathVariable(value = "id")  String id, @PathVariable(value = "psw") String psw) {
+        User userItem = null;
+        userItem = (User) userRepository.findByName(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+        Cookie myCookie = null;
+        if(userItem.getPassword().equals(psw)){
+            myCookie = new Cookie("user", userItem.getId().toString());
+            myCookie.setMaxAge(500000);
+        }
+        return myCookie;
     }
 
     @ApiOperation(value="Altera um item buscado pelo id", response=User.class)

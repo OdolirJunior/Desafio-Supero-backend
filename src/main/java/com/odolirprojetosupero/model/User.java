@@ -12,7 +12,7 @@ public class User implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name")
+    @Column(name = "username")
     private String user;
 
     @Column(name = "senha")
