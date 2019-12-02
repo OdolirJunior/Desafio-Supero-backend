@@ -6,10 +6,10 @@ Para utilizar o sistema com as mesmas configurações de banco de dado deve ser 
 
 1° ```CREATE DATABASE PUBLIC; ```<br/><br/>
 2° ```CREATE TABLE public.users (	
-	username VARCHAR(255) NOT NULL primary key, 	
-	senha VARCHAR(255) NOT NULL, 	
-	enabled boolean
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
+      id INT NOT NULL AUTO_INCREMENT, 
+      username VARCHAR(255) NOT NULL,
+      senha VARCHAR(255) NOT null,
+      PRIMARY KEY (id) )  ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
 3° ```CREATE TABLE public.group_todos ( 
       id INT NOT NULL AUTO_INCREMENT, 
       title VARCHAR(255) NOT NULL,
