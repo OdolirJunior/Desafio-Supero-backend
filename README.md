@@ -1,8 +1,4 @@
-## Odolir Junior - Desafio Supero (BACK-END)
-
-Todos os items solicitados foram atendidos.
-
-Como base do projeto, foi utilizado Spring Web, JPA e devtools e Java 8.
+## Trabalho M3 (BACK-END)
 
 ### Banco de dados: 
 
@@ -48,18 +44,13 @@ Para utilizar o sistema com as mesmas configurações de banco de dado deve ser 
        authority varchar(50) not null,
        foreign key (username) references users(username))ENGINE = InnoDB DEFAULT CHARACTER SET = utf8; 
        ```<br/><br/>
-7° ```create unique index ix_auth_username on public.authorities (username,authority);```<br/><br/>       
-O usuario e senha são os padrões do MySQL (root e root); 
+7° ```create unique index ix_auth_username on public.authorities (username,authority);```<br/><br/>
+
+8° ```INSERT INTO `public`.`users` (`username`, `senha`) VALUES ('admin', 'admin');```<br/><br/>
+       
+No banco, o usuário é "root" e senha é vazia.
 
 ### Iniciar a aplicação:
 Após criar o banco de dados, 
 para iniciar a aplicação basta rodar o comando `mvn spring-boot:run` para 
 linux ou `mvnw spring-boot:run` para windows.
-
-#### Documentação: 
-
-A documentação da API foi realizada utilizando Swagger, para visualizar, basta acessar o link: 
-
-```
-http://localhost:8080/swagger-ui.html#/
-```
