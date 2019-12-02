@@ -1,8 +1,8 @@
-package com.odolirprojetosupero.controller;
+package com.controller;
 
-import com.odolirprojetosupero.exception.ResourceNotFoundException;
-import com.odolirprojetosupero.model.TodoItem;
-import com.odolirprojetosupero.repository.TodoItemRepository;
+import com.model.TodoItem;
+import com.exception.ResourceNotFoundException;
+import com.repository.TodoItemRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -24,7 +24,7 @@ public class TodoItemController {
         return new Sort(Sort.Direction.ASC, "title");
     }
 
-    @ApiOperation(value="Lista todos os items", response=TodoItem.class)
+    @ApiOperation(value="Lista todos os items", response= TodoItem.class)
     @ApiResponses(value= {@ApiResponse(code=200, message="Retorna um dicionario de objetos com os items", response=TodoItem.class)})
     @RequestMapping(value = "/todositem", method = RequestMethod.GET)
     public List<TodoItem> getAllTodos() {

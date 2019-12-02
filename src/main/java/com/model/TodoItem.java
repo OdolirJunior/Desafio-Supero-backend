@@ -1,8 +1,7 @@
-package com.odolirprojetosupero.model;
+package com.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Table(name = "todos_items")

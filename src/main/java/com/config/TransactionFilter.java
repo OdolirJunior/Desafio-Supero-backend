@@ -1,4 +1,4 @@
-package com.odolirprojetosupero.config;
+package com.config;
 
 import java.io.IOException;
 
@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,16 +16,16 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * A servlet filter to log request and response
- * The logging implementation is pretty native and for demonstration only
+ * A filter to create transaction before and commit it once request completes
+ * The current implemenatation is just for demo
  * @author hemant
  *
  */
 @Component
-@Order(2)
-public class RequestResponseLoggingFilter implements Filter {
+@Order(1)
+public class TransactionFilter implements Filter {
 
-    private final static Logger LOG = LoggerFactory.getLogger(RequestResponseLoggingFilter.class);
+    private final static Logger LOG = LoggerFactory.getLogger(TransactionFilter.class);
 
     @Override
     public void init(final FilterConfig filterConfig) throws ServletException {
@@ -34,13 +33,11 @@ public class RequestResponseLoggingFilter implements Filter {
     }
 
     @Override
-    public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain)
-            throws IOException, ServletException {
+    public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-        LOG.info("Logging Request  {} : {}", req.getMethod(), req.getRequestURI());
+        LOG.info("Starting Transaction for req :{}", req.getRequestURI());
         chain.doFilter(request, response);
-        LOG.info("Logging Response :{}", res.getContentType());
+        LOG.info("Committing Transaction for req :{}", req.getRequestURI());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.odolirprojetosupero.config;
+package com.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ public class SwaggerConfig {
 
         docket
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.odolirprojetosupero"))
+                .apis(RequestHandlerSelectors.basePackage("com"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(this.informacoesApi().build());
@@ -34,7 +34,7 @@ public class SwaggerConfig {
 
         ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
 
-        apiInfoBuilder.title("Desafio Supero - Todo List");
+        apiInfoBuilder.title("Todo List");
         apiInfoBuilder.description("Documentação da API");
         apiInfoBuilder.version("1.0");
         apiInfoBuilder.contact(this.contato());
@@ -45,8 +45,8 @@ public class SwaggerConfig {
     private Contact contato() {
 
         return new Contact(
-                "Odolir Daniel dos Santos Junior",
-                "http://www.supero.com.br",
-                "odolirdaniel@gmail.com");
+                "Nome",
+                "http://www.example.com",
+                "example@gmail.com");
     }
 }

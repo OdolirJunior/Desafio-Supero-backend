@@ -1,7 +1,7 @@
-package com.odolirprojetosupero.repository;
+package com.repository;
 
 
-import com.odolirprojetosupero.model.TodoItem;
+import com.model.TodoItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

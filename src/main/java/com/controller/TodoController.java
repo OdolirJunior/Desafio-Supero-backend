@@ -1,8 +1,8 @@
-package com.odolirprojetosupero.controller;
+package com.controller;
 
-import com.odolirprojetosupero.exception.ResourceNotFoundException;
-import com.odolirprojetosupero.model.Todo;
-import com.odolirprojetosupero.repository.TodoRepository;
+import com.exception.ResourceNotFoundException;
+import com.model.Todo;
+import com.repository.TodoRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;

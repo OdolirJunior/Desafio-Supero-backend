@@ -1,10 +1,9 @@
-package com.odolirprojetosupero.config;
+package com.config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//ìmport com.odolirprojetosupero.config.RequestResponseLoggingFilter;
+//ìmport RequestResponseLoggingFilter;
 
 @Configuration
 public class FilterConfig {

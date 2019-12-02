@@ -1,4 +1,4 @@
-package com.odolirprojetosupero.exception;
+package com.exception;
 
 
 import org.springframework.http.HttpStatus;

@@ -1,13 +1,12 @@
-package com.odolirprojetosupero.repository;
+package com.repository;
 
 
-import com.odolirprojetosupero.model.GroupTodo;
+import com.model.GroupTodo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface GroupTodoRepository extends JpaRepository<GroupTodo, Long>{

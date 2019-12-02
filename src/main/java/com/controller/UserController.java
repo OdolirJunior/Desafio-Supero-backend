@@ -1,8 +1,8 @@
-package com.odolirprojetosupero.controller;
+package com.controller;
 
-import com.odolirprojetosupero.exception.ResourceNotFoundException;
-import com.odolirprojetosupero.model.User;
-import com.odolirprojetosupero.repository.UserRepository;
+import com.model.User;
+import com.exception.ResourceNotFoundException;
+import com.repository.UserRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.validation.Valid;
-import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @RestController
