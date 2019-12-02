@@ -8,14 +8,13 @@ Para utilizar o sistema com as mesmas configurações de banco de dado deve ser 
 2° ```CREATE TABLE public.users (	
 	username VARCHAR(255) NOT NULL primary key, 	
 	senha VARCHAR(255) NOT NULL, 	
-	enabled boolean not null
+	enabled boolean
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
 3° ```CREATE TABLE public.group_todos ( 
-    id INT NOT NULL AUTO_INCREMENT, title VARCHAR(255) NOT NULL,
-    username VARCHAR(255), 
-    FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE,
-     PRIMARY KEY (id) 
-     ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
+      id INT NOT NULL AUTO_INCREMENT, 
+      title VARCHAR(255) NOT NULL,
+      username VARCHAR(255),
+      PRIMARY KEY (id) ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
 
 4° ```CREATE TABLE public.todos (
 	id INT NOT NULL AUTO_INCREMENT,
@@ -39,12 +38,6 @@ Para utilizar o sistema com as mesmas configurações de banco de dado deve ser 
 	ON DELETE CASCADE,
 	primary key (id)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
-6° ``` create table public.authorities (
-       username varchar(50) not null,
-       authority varchar(50) not null,
-       foreign key (username) references users(username))ENGINE = InnoDB DEFAULT CHARACTER SET = utf8; 
-       ```<br/><br/>
-7° ```create unique index ix_auth_username on public.authorities (username,authority);```<br/><br/>
 
 8° ```INSERT INTO `public`.`users` (`username`, `senha`) VALUES ('admin', 'admin');```<br/><br/>
        

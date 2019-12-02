@@ -19,9 +19,8 @@ public class GroupTodo implements Serializable {
     @Column(name = "title")
     private String title;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User userId;
+    @Column(name = "user_id")
+    private Long userId;
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Todo> todos = new HashSet<>();
@@ -42,11 +41,11 @@ public class GroupTodo implements Serializable {
         this.title = title;
     }
 
-    public User getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
