@@ -2,7 +2,7 @@
 
 ### Banco de dados: 
 
-Para utilizar o sistema com as mesmas configurações de banco de dado deve ser executado os seguintes comandos: <br/> 
+Para utilizar o sistema com as mesmas configurações de banco de dados (MySQL) deve ser executado os seguintes comandos: <br/> 
 
 1° ```CREATE DATABASE PUBLIC; ```<br/><br/>
 2° ```CREATE TABLE public.users (	
