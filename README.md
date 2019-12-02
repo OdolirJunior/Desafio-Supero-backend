@@ -39,7 +39,7 @@ Para utilizar o sistema com as mesmas configurações de banco de dado deve ser 
 	primary key (id)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8;```<br/><br/>
 
-8° ```INSERT INTO `public`.`users` (`username`, `senha`) VALUES ('admin', 'admin');```<br/><br/>
+6° ```INSERT INTO `public`.`users` (`username`, `senha`) VALUES ('admin', 'admin');```<br/><br/>
        
 No banco, o usuário é "root" e senha é vazia.
 
